@@ -37,29 +37,38 @@ Intelligence Daily is a zero-cost, fully automated news briefing system. It cura
 
 ---
 
-## ⚙️ Setup Instructions (For Developers)
+## 🚀 Easy 5-Minute Setup (For Beginners)
 
-If you want to run your own version of Intelligence Daily:
+You don't need to be a coder to use this! Follow these steps to get your own daily briefing:
 
-1. **Clone the Repo:**
-   ```bash
-   git clone https://github.com/your-username/intelligence-daily.git
-   ```
-2. **Install Dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. **Configure Environment:**
-   Create a `.env` file with:
-   - `GEMINI_API_KEY`: Your Google AI Studio Key.
-   - `EMAIL_USER`: Your Gmail address.
-   - `EMAIL_PASS`: Your 16-character Google App Password.
-   - `RECEIVER_EMAIL`: The email where you want to receive the news.
+1. **Fork this Repo:** Click the **Fork** button at the top right of this page to create your own copy.
+2. **Get your API Key:** Go to [Google AI Studio](https://aistudio.google.com/app/apikey) and get a free Gemini API Key.
+3. **Get your Email Password:**
+   - Go to your Google Account Settings -> Security.
+   - Enable 2-Step Verification.
+   - Search for "App Passwords" and create one for "Mail". You will get a 16-character code.
+4. **Add Secrets to GitHub:**
+   - In **your forked repo**, go to **Settings** -> **Secrets and variables** -> **Actions**.
+   - Click **New repository secret** and add these four:
+     - `GEMINI_API_KEY`: (Your key from step 2)
+     - `EMAIL_USER`: (Your Gmail address)
+     - `EMAIL_PASS`: (The 16-character code from step 3)
+     - `RECEIVER_EMAIL`: (Where you want to receive the news)
+5. **Turn it On:**
+   - Go to the **Actions** tab in your repo.
+   - Click **Daily Intelligence Briefing** on the left.
+   - Click **Run workflow** -> **Run workflow**.
+   - **That's it!** You will now get an email every morning at 9:00 AM IST.
 
-4. **Run Locally:**
-   ```bash
-   python main.py
-   ```
+---
+
+## ⚙️ Advanced Setup (For Developers)
+(If you want to run this locally on your own machine)
+
+1. **Clone the Repo:** `git clone https://github.com/your-username/intelligence-daily.git`
+2. **Install Deps:** `pip install -r requirements.txt`
+3. **Environment:** Create a `.env` file with your keys (see `.env.example`).
+4. **Run:** `python main.py`
 
 ---
 
