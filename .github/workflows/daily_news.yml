@@ -2,9 +2,10 @@ name: Daily Intelligence Briefing
 
 on:
   schedule:
-    # This tells GitHub to run every day at 03:30 AM UTC
-    # 03:30 AM UTC is 09:00 AM Indian Standard Time (IST)
-    - cron: '30 3 * * *'
+    # This tells GitHub to run every day at 01:30 AM UTC
+    # 01:30 AM UTC is 07:00 AM Indian Standard Time (IST)
+    # Scheduling earlier ensures the email arrives closer to 09:00 AM despite GitHub's queue delays
+    - cron: '30 1 * * *'
   workflow_dispatch: # This allows you to run it manually from GitHub anytime
 
 jobs:
@@ -32,4 +33,19 @@ jobs:
         EMAIL_USER: ${{ secrets.EMAIL_USER }}
         EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
         RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
-      run: python main.py
+      run: |
+        # Try running the pipeline up to 3 times to gracefully handle temporary API rate limits
+        for i in 1 2 3; do
+          echo "--- Attempt $i ---"
+          if python main.py; then
+            echo "Success!"
+            exit 0
+          fi
+          echo "Attempt $i failed due to an error (likely a temporary API limit)."
+          if [ $i -lt 3 ]; then
+            echo "Waiting 3 minutes before trying again..."
+            sleep 180
+          fi
+        done
+        echo "Pipeline failed after 3 attempts."
+        exit 1
