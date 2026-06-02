@@ -25,39 +25,40 @@ def summarize_news(news_articles):
     # 2. Craft the Prompt
     current_date = datetime.now().strftime("%B %d, %Y")
     prompt = f"""
-    You are a 'Strict Content Gatekeeper' and 'Simple Teacher' for 'Intelligence Daily'. 
-    Today's date is {current_date}.
+    You are 'Intelligence Daily', a premium AI curator. Your goal is to provide an easy-to-read briefing for a beginner.
+    Today is {current_date}.
     
-    I have provided news data below. 
-
-    DATA:
+    NEWS DATA:
     {news_context}
 
-    YOUR CORE TASK:
-    1. STRICT FILTERING (NO FLUFF): Only include news about Major Tech/AI companies (Apple, OpenAI, Google, Microsoft, NVIDIA, etc.). 
-       - IGNORE: Lifestyle, Music/Celebrities, Sales/Deals, Mother's Day, scary TV shows, how-to tips, or small gadget reviews.
-       - If it doesn't change the world of AI or Big Tech, do not include it.
-    2. BE SPECIFIC: If you mention a count (e.g., "3 new features"), you MUST briefly list all of them. Never say "new features" without saying what they are. 
-    3. EXPLAIN LIKE I'M 6: Use very basic English.
-    4. BOLD MINI-HEADERS: Every bullet point MUST start with a **Bold Short Title:**.
-    5. DEEP MARKET REASONING: Explain exactly why the Indian market moved.
-    6. SOURCE: End every bullet with (Source: Name).
+    STRICT INSTRUCTIONS:
+    1. FILTERING: Include ALL important news from the provided data. Do not limit yourself to major tech companies—cover anything interesting or impactful in tech, business, AI, and startups.
+    2. QUANTITY: Include as many points as necessary. Do NOT cap it to 3-4 points. Group them logically under the headers.
+    3. CONCISE BULLETS: Every bullet point MUST be a maximum of 1 or 2 short lines. Be incredibly brief and direct. Get straight to the point.
+    4. EXPLAIN LIKE I'M 10: Use very basic, simple English. Absolutely NO corporate jargon, NO complex technical terms, and NO confusing acronyms. Write like you are explaining it to a middle-schooler.
+    5. NO FLUFF: No "Hello," no introductory paragraphs. Start immediately with the headers.
+    6. FORMATTING: Use EXACTLY the headers below starting with '##'. Each bullet must start with '* **Title:**' followed by the description.
+    7. SOURCE: End every bullet with (Source: Name).
 
-    STRUCTURE:
-    ## TOP UPDATES
-    * **(Title):** (1-3 line simple explanation with ALL specific details and source)
+    STRUCTURE (MUST FOLLOW EXACTLY):
+    
+    ## EXECUTIVE SUMMARY
+    * **The Big Picture:** (A 2-sentence ultra-simple overview of today's news.)
 
-    ## AI & ROBOT NEWS
-    * **(Title):** (Detailed 1-3 line update. Mention specific features/names. (Source: Name))
+    ## 🚀 TOP UPDATES
+    * **(Title):** (1-2 line simple explanation. (Source: Name))
+    * (Add as many points as needed...)
 
-    ## TECH & BUSINESS (MAJOR ONLY)
-    * **(Title):** (Only major moves from big tech/IT companies. (Source: Name))
+    ## 🤖 AI & TECH NEWS
+    * **(Title):** (1-2 line simple explanation. (Source: Name))
+    * (Add as many points as needed...)
 
-    ## INDIAN STOCK MARKET
-    * **(Title):** (Deep reasoning for the move and source)
+    ## 💼 BUSINESS & MARKETS
+    * **(Title):** (1-2 line simple explanation. (Source: Name))
+    * (Add as many points as needed...)
 
-    ## THE FINAL INTELLIGENCE
-    * **(Title):** (One simple sentence on what this means for the future.)
+    ## 🧠 THE FINAL INTELLIGENCE
+    * **Takeaway:** (One simple sentence on the future implication.)
     """
 
     print("--- Gemini is now researching the web and summarizing ---")

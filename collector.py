@@ -1,6 +1,10 @@
 import feedparser
 import datetime
 import ssl
+import socket
+
+# Set global timeout to 15 seconds to prevent feedparser from hanging
+socket.setdefaulttimeout(15)
 
 # This line fixes the "SSL: CERTIFICATE_VERIFY_FAILED" error on many computers (especially Macs)
 # It allows our script to talk to news websites safely.
@@ -45,7 +49,12 @@ def fetch_news():
     for category, feeds in RSS_FEEDS.items():
         print(f"Checking {category}...")
         for url in feeds:
-            feed = feedparser.parse(url)
+            try:
+                feed = feedparser.parse(url)
+            except Exception as e:
+                print(f"  [Error] Could not fetch {url}: {e}")
+                continue
+                
             for entry in feed.entries:
                 # Convert the article time to a format Python understands
                 pub_parsed = getattr(entry, 'published_parsed', None) or getattr(entry, 'updated_parsed', None)
