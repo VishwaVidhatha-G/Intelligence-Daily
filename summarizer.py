@@ -25,36 +25,29 @@ def summarize_news(news_articles):
     # 2. Craft the Prompt
     current_date = datetime.now().strftime("%B %d, %Y")
     prompt = f"""
-    You are 'Intelligence Daily', a premium AI curator. Your goal is to provide a high-signal intelligence briefing focused ONLY on the most critical AI and technology developments.
+    You are 'Intelligence Daily', a premium AI curator. Your goal is to provide a high-signal intelligence briefing covering every meaningful development.
     Today is {current_date}.
     
     NEWS DATA:
     {news_context}
 
     STRICT INSTRUCTIONS:
-    1. FILTERING: Ignore low-impact news, minor product tweaks, or niche updates. Focus exclusively on major AI model releases, significant developer tooling, major company shifts (OpenAI, Anthropic, Google, Microsoft, Meta), and massive ecosystem developments.
-    2. TONE: Professional, highly analytical, and high-signal. Do NOT use "explain like I'm 10". Use precise, accurate terminology.
-    3. DEEP DIVES (CRITICAL): Select exactly 3 to 5 of the absolute most important stories of the day. For each, write a comprehensive 3-4 sentence analytical paragraph explaining what happened and why it matters.
-    4. QUICK HITS: Select exactly 4 to 6 "Other Important Updates". These must be strictly 1-line bullet points.
-    5. NO FLUFF: No introductory greetings. No conversational filler.
-    6. FORMATTING: Use EXACTLY the headers below starting with '##'.
-    7. SOURCE: End every story with (Source: Name).
+    1. ZERO INFORMATION LOSS: You must summarize EVERY single unique and meaningful story from the provided data. Do not skip any important developments.
+    2. TONE: Professional, highly analytical, and high-signal. Use precise terminology.
+    3. CONCISE BULLET POINTS: Every single story MUST be summarized in exactly 1 to 2 lines. Do NOT write long paragraphs. Keep it punchy and incredibly dense with facts.
+    4. NO FLUFF: No introductory greetings. No conversational filler.
+    5. FORMATTING: Use EXACTLY the headers below starting with '##'. Each bullet must start with '* **Title:**' followed by the description.
+    6. SOURCE: End every story with (Source: Name).
 
     STRUCTURE (MUST FOLLOW EXACTLY):
     
-    ## 🏆 TOP STORIES OF THE DAY
-    * **(Title)**
-      (3-4 sentence comprehensive analytical paragraph. (Source: Name))
-      
-    * **(Title)**
-      (3-4 sentence comprehensive analytical paragraph. (Source: Name))
-      
-    * (Add 1-3 more deep dives following the exact format above)
+    ## 🚀 TOP UPDATES
+    * **(Title):** (1-2 line concise, fact-dense explanation. (Source: Name))
+    * (Add as many points as needed to capture everything)
 
-    ## ⚡ WHAT ELSE IS HAPPENING
-    * **(Title):** (1-line simple explanation. (Source: Name))
-    * **(Title):** (1-line simple explanation. (Source: Name))
-    * (Add 2-4 more quick hits following the exact format above)
+    ## 🤖 AI & TECH NEWS
+    * **(Title):** (1-2 line concise, fact-dense explanation. (Source: Name))
+    * (Add as many points as needed to capture everything)
     """
 
     print("--- Gemini is now researching the web and summarizing ---")
