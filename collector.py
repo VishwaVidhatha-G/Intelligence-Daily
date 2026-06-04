@@ -10,29 +10,14 @@ socket.setdefaulttimeout(15)
 # It allows our script to talk to news websites safely.
 ssl._create_default_https_context = ssl._create_unverified_context
 
-# A list of high-quality news sources (RSS feeds)
+# A highly curated list of AI and Technology sources
 RSS_FEEDS = {
     "AI News": [
         "https://techcrunch.com/category/artificial-intelligence/feed/",
         "https://venturebeat.com/category/ai/feed/",
         "https://www.theverge.com/ai-artificial-intelligence/rss/index.xml",
-        "https://syncedreview.com/feed/",
         "https://openai.com/news/rss.xml",
         "https://blog.google/technology/ai/rss/",
-        "https://www.unite.ai/feed/",
-    ],
-    "Technology": [
-        "https://www.theverge.com/rss/index.xml",
-        "https://arstechnica.com/feed/",
-        "https://www.wired.com/feed/rss",
-        "https://9to5mac.com/feed/",
-    ],
-    "Business & Markets": [
-        "https://www.moneycontrol.com/rss/marketnews.xml",
-        "https://www.moneycontrol.com/rss/latestnews.xml",
-        "https://www.livemint.com/rss/markets",
-        "https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms",
-        "https://finance.yahoo.com/news/rssindex",
     ]
 }
 
@@ -68,7 +53,6 @@ def fetch_news():
                             "category": category,
                             "title": entry.title,
                             "link": entry.link,
-                            "summary": entry.get('summary', ''),
                             "source": feed.feed.get('title', 'Unknown Source')
                         }
                         all_articles.append(article)

@@ -25,40 +25,36 @@ def summarize_news(news_articles):
     # 2. Craft the Prompt
     current_date = datetime.now().strftime("%B %d, %Y")
     prompt = f"""
-    You are 'Intelligence Daily', a premium AI curator. Your goal is to provide an easy-to-read briefing for a beginner.
+    You are 'Intelligence Daily', a premium AI curator. Your goal is to provide a high-signal intelligence briefing focused ONLY on the most critical AI and technology developments.
     Today is {current_date}.
     
     NEWS DATA:
     {news_context}
 
     STRICT INSTRUCTIONS:
-    1. FILTERING: Include ALL important news from the provided data. Do not limit yourself to major tech companies—cover anything interesting or impactful in tech, business, AI, and startups.
-    2. QUANTITY: Include as many points as necessary. Do NOT cap it to 3-4 points. Group them logically under the headers.
-    3. CONCISE BULLETS: Every bullet point MUST be a maximum of 1 or 2 short lines. Be incredibly brief and direct. Get straight to the point.
-    4. EXPLAIN LIKE I'M 10: Use very basic, simple English. Absolutely NO corporate jargon, NO complex technical terms, and NO confusing acronyms. Write like you are explaining it to a middle-schooler.
-    5. NO FLUFF: No "Hello," no introductory paragraphs. Start immediately with the headers.
-    6. FORMATTING: Use EXACTLY the headers below starting with '##'. Each bullet must start with '* **Title:**' followed by the description.
-    7. SOURCE: End every bullet with (Source: Name).
+    1. FILTERING: Ignore low-impact news, minor product tweaks, or niche updates. Focus exclusively on major AI model releases, significant developer tooling, major company shifts (OpenAI, Anthropic, Google, Microsoft, Meta), and massive ecosystem developments.
+    2. TONE: Professional, highly analytical, and high-signal. Do NOT use "explain like I'm 10". Use precise, accurate terminology.
+    3. DEEP DIVES (CRITICAL): Select exactly 3 to 5 of the absolute most important stories of the day. For each, write a comprehensive 3-4 sentence analytical paragraph explaining what happened and why it matters.
+    4. QUICK HITS: Select exactly 4 to 6 "Other Important Updates". These must be strictly 1-line bullet points.
+    5. NO FLUFF: No introductory greetings. No conversational filler.
+    6. FORMATTING: Use EXACTLY the headers below starting with '##'.
+    7. SOURCE: End every story with (Source: Name).
 
     STRUCTURE (MUST FOLLOW EXACTLY):
     
-    ## EXECUTIVE SUMMARY
-    * **The Big Picture:** (A 2-sentence ultra-simple overview of today's news.)
+    ## 🏆 TOP STORIES OF THE DAY
+    * **(Title)**
+      (3-4 sentence comprehensive analytical paragraph. (Source: Name))
+      
+    * **(Title)**
+      (3-4 sentence comprehensive analytical paragraph. (Source: Name))
+      
+    * (Add 1-3 more deep dives following the exact format above)
 
-    ## 🚀 TOP UPDATES
-    * **(Title):** (1-2 line simple explanation. (Source: Name))
-    * (Add as many points as needed...)
-
-    ## 🤖 AI & TECH NEWS
-    * **(Title):** (1-2 line simple explanation. (Source: Name))
-    * (Add as many points as needed...)
-
-    ## 💼 BUSINESS & MARKETS
-    * **(Title):** (1-2 line simple explanation. (Source: Name))
-    * (Add as many points as needed...)
-
-    ## 🧠 THE FINAL INTELLIGENCE
-    * **Takeaway:** (One simple sentence on the future implication.)
+    ## ⚡ WHAT ELSE IS HAPPENING
+    * **(Title):** (1-line simple explanation. (Source: Name))
+    * **(Title):** (1-line simple explanation. (Source: Name))
+    * (Add 2-4 more quick hits following the exact format above)
     """
 
     print("--- Gemini is now researching the web and summarizing ---")

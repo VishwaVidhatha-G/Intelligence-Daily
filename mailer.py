@@ -81,7 +81,7 @@ def send_email(subject, body):
             </div>
             {html_content}
             <div style="margin-top: 60px; border-top: 1px solid #eee; padding-top: 20px; text-align: center; font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 2px;">
-                Automated Intelligence • Portfolio V2.5 • Simple English Edition
+                High-Signal Intelligence Briefing
             </div>
         </div>
     </body>
